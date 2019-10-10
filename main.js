@@ -1,16 +1,47 @@
-console.log('I am Javascript running in your page!'
-)
+import { films } from '/assets/films.js';
+import { people } from '/assets/people.js'
 
-let mainHeader = document.querySelector ('h1')
-let allHeaders = document.querySelectorAll ('h1')
-console.log(allHeaders)
-mainHeader.textContent = 'Hello!' 
-mainHeader.setAttribute("style", "color:red; border: 1px solid blue;");
+let mainArea = document.querySelector('main')
 
-let newDiv = document.createElement("div"); 
-newDiv.textContent = "Here I am, a new Div."
+films.forEach(function(film) {
+    let filmDiv = document.createElement('div')
+    let filmTitle = document.createElement('h1')
+    let filmCrawl = document.createElement('p')
 
-document.querySelector('main').setAttribute("style", "background-color: #dfdfdf;")
+    
+    filmTitle.textContent = film.title
+    filmCrawl.textContent = film.opening_crawl
+
+    filmDiv.appendChild(filmTitle)
+    filmDiv.appendChild(filmCrawl)
+    mainArea.appendChild(filmDiv)
+  });
+
+  people.forEach((person)=> {
+      let personDiv = document.createElement ('div')
+      let name = document.createElement ('h1')
+      let gender = document.createElement('p')
+      let pic = document.createElement('img')
+    
+    let charNum = getCharNumber(person.url)
+
+      name.textContent = person.name
+      gender.textContent = person.gender
+      pic.src = `https://starwars-visualguide.com/assets/img/characters/${charNum}.jpg`
 
 
-document.querySelector('main').appendChild(newDiv);
+      personDiv.appendChild(name)
+      personDiv.appendChild(gender)
+      personDiv.appendChild(pic)
+
+      mainArea.appendChild(personDiv)
+  })
+function getCharNumber(charURL){
+    let end = charURL.lastIndexOf('/')
+    let charID = (charURL.substring(end -2, end))
+    if(charID.indexOf('/') !== -1) {
+        return (charID.slice(1,2))
+    } else {
+        return charID
+    }
+}
