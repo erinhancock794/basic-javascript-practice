@@ -1,7 +1,31 @@
 import { films } from '/assets/films.js';
-import { people } from '/assets/people.js'
+import { people } from '/assets/people.js';
+import { species } from '/assets/species.js';
+
 
 let mainArea = document.querySelector('main')
+
+species.forEach((alien) => {
+let alienDiv = document.createElement ('div')
+let alienName = document.createElement('h1')
+let alienPeople = document.createElement ('img')
+
+let alienLang = document.createElement ('h2')
+
+let charNum = getCharNumber(alien.url)
+
+alienName.textContent = alien.name
+alienLang.textContent = ('Language: ' + alien.language)
+alienPeople.src = `https://starwars-visualguide.com/assets/img/species/${charNum}.jpg`
+
+alienDiv.appendChild(alienName)
+alienDiv.appendChild(alienPeople)
+alienDiv.appendChild(alienLang)
+mainArea.appendChild(alienDiv)
+
+});
+
+
 
 films.forEach(function(film) {
     let filmDiv = document.createElement('div')

@@ -1,5 +1,12 @@
 h1{
-    color: blue;
+    color: white;
+}
+p {
+    color: red;
+}
+h2{
+    
+    color: yellow;
 }
 main {
     display: grid;
@@ -14,4 +21,14 @@ main {
 
 div {
     padding: 10px;
+    
+}
+img {
+    border-radius: 50px;
+    width: 80%;
+    border: 10px solid black;
+    
+}
+img a:hover{
+background-color: red;
 }
